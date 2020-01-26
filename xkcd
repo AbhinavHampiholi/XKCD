@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url=$(curl https://xkcd.com/ | grep 'img src="//imgs.xkcd.com/comics' | cut -d'"' -f2)
+comicname=${url##*/}
+prefix='https:'
+fullurl=$prefix$url
+wget -O $comicname $fullurl
+feh -x $comicname
+rm $comicname
